@@ -25,7 +25,41 @@ export async function readRawPosts() {
 
   try {
     const files = await fs.readdir(contentPath);
-    return files;
+
+    const fileAbstract: {
+      date: string;
+      title: string;
+      key: string;
+    }[] = [];
+
+    for(let file of files) {
+      const filepath = `${contentPath}/${file}`;
+      const filestat = await fs.stat(filepath);
+      if (filestat.isDirectory()) {
+        continue;
+      }
+      const mtime = filestat.mtime;
+      const fileContent = await fs.readFile(filepath, {
+        encoding: 'utf-8',
+      });
+      const lines = fileContent.split(/\r?\n/);
+
+      let title = '';
+
+      for (let line of lines) {
+        if (line.startsWith('#') && !line.includes('##')) {
+          title = line.replace('#', '').trim();
+          break;
+        }
+      }
+
+      fileAbstract.push({
+        date: `${mtime.getFullYear()}-${mtime.getMonth()}-${mtime.getDay()}`,
+        title,
+        key: file,
+      });
+    }
+    return fileAbstract;
   } catch (error) {
     console.log(error);
     return [];

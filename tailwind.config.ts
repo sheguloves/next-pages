@@ -11,7 +11,7 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        navbar: "#006633",
+        navbar: "var(--maincolor1)",
         textcolor: "white",
       },
     },

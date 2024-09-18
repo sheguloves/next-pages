@@ -10,6 +10,4 @@ if (process.env.GITHUB_PAGE_BASE_PATH) {
   nextConfig.basePath = process.env.GITHUB_PAGE_BASE_PATH;
 }
 
-console.log(nextConfig);
-
 export default nextConfig;

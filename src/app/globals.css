@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --maincolor1: #006633;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,10 +15,66 @@
   }
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #006633;
+}
+a:hover {
+  color: #66CC66;
+}
+
+h1 {
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: large;
+  margin-bottom: .8rem;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  border: 1px solid var(--maincolor1);
+}
+
+
+h3 {
+  font-size: larger;
+  margin-bottom: 1rem;
+}
+
+h3::after {
+  content: '';
+  display: block;
+  border: .5px solid var(--maincolor1);
+
+}
+
+code {
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  overflow: auto;
+  display: block;
+  background-color: #CCFFCC;
+}
+
+.posts-top::after {
+  content: '';
+  display: block;
+  border: 0.5px solid var(--maincolor1);
+  margin-bottom: 2rem;
 }
 
 @layer utilities {
