@@ -22,7 +22,7 @@ marked.use(gfmHeadingId({prefix: 'md-'}), {
       tableOfContent = '';
       if (headings.length >= 2) {
         tableOfContent = `
-          <ul id="table-of-contents">
+          <ul class="table-of-contents">
             ${headings.map(({id, raw, level}) => `<li class="ml-${(level - 2) * 4}"><a href="#${id}">${raw}</a></li>`).join('')}
           </ul>
         `;

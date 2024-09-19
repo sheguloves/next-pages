@@ -8,6 +8,7 @@ export interface Post {
   date: string;
   title: string;
   key: string;
+  createTime: Date;
 }
 
 export async function readRawPosts() {
@@ -24,14 +25,13 @@ export async function readRawPosts() {
       if (filestat.isDirectory()) {
         continue;
       }
-      const mtime = filestat.mtime;
+      const ctime = filestat.ctime;
       const fileContent = await fs.readFile(filepath, {
         encoding: 'utf-8',
       });
       const lines = fileContent.split(/\r?\n/);
 
       let title = '';
-
       for (const line of lines) {
         if (line.startsWith('#') && !line.includes('##')) {
           title = line.replace('#', '').trim();
@@ -40,12 +40,13 @@ export async function readRawPosts() {
       }
 
       fileAbstract.push({
-        date: `${mtime.getFullYear()}-${mtime.getMonth() + 1}-${mtime.getDate()}`,
+        createTime: ctime,
+        date: `${ctime.getFullYear()}-${ctime.getMonth() + 1}-${ctime.getDate()}`,
         title,
         key: file,
       });
     }
-    return fileAbstract;
+    return fileAbstract.sort((a, b) => a.createTime < b.createTime ? 1 : -1);
   } catch (error) {
     console.log('Read raw post error', error);
     return [];
