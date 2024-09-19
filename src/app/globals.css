@@ -89,10 +89,12 @@ h3::after {
 
 ul {
   margin-left: 1rem;
+  list-style-type: disc;
 }
 
-li {
-  list-style-type: disc;
+ol {
+  margin-left: 1rem;
+  list-style: decimal;
 }
 
 aside li  span.post-date {
@@ -108,6 +110,12 @@ aside li  span.post-date {
 
 .table-of-contents .ml-4 {
   margin-left: 2rem;
+}
+
+blockquote {
+  padding-left: 1rem;
+  border-left: 1px solid;
+  margin: 1rem 0 1rem 1rem;
 }
 
 @layer utilities {
