@@ -1,4 +1,4 @@
-# Defer VS aysnc
+# Defer VS Aysnc
 
 script 标签中，defer 和 async的区别。
 

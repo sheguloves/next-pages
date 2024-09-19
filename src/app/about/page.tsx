@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import weixinPng from 'public/assets/weixin.png';
 
 export default function About() {
@@ -16,6 +17,12 @@ export default function About() {
         </li>
         <li><span className="pr-4"><strong>后端: </strong></span>Node.js 和 Express</li>
         <li><span className="pr-4"><strong>运维: </strong></span>Docker 和 Nginx</li>
+      </ul>
+      <h2>个人项目</h2>
+      <ul>
+        <li>
+          <Link  href="https://demo2.itrace.top/" target="_blank">大理石直播平台</Link>
+        </li>
       </ul>
       <h2>联系我</h2>
       <ul>

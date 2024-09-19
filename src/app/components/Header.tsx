@@ -12,7 +12,7 @@ export default function Header() {
         <Link href="/" className="text-xl">首页</Link>
         <Link href="/about" className="text-xl">关于我</Link>
       </nav>
-      <Link href={myGithubPage} className="">
+      <Link href={myGithubPage} target="_blank">
         <Image src={githubImg} alt="Picture of github"></Image>
       </Link>
 
