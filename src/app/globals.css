@@ -9,7 +9,7 @@
   --linkcolor: #e0effa;
   --hovercolor: #EA6341;
   --textcolor: #e0effa;
-  --codecolor: #5d2a13;
+  --codecolor: #672842;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,9 +31,15 @@ body {
 
 a {
   color: var(--linkcolor);
+  text-decoration: underline;
 }
 a:hover {
   color: var(--hovercolor);
+  font-weight: 600;
+}
+
+nav a {
+  text-decoration: none;
 }
 
 h1 {

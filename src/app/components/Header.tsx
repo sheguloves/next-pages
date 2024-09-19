@@ -8,9 +8,9 @@ export default function Header() {
   return (
     <header className="h-14 bg-navbar flex items-center gap-6 justify-stretch px-10 shrink-0 sticky top-0 z-20">
       <div className="md:w-1/5"></div>
-      <nav className="flex-auto flex items-center gap-6">
-        <Link href="/" className="text-xl text-textcolor">首页</Link>
-        <Link href="/about" className="text-xl text-textcolor">关于我</Link>
+      <nav className="flex-auto flex items-center gap-6 font-medium">
+        <Link href="/" className="text-xl">首页</Link>
+        <Link href="/about" className="text-xl">关于我</Link>
       </nav>
       <Link href={myGithubPage} className="">
         <Image src={githubImg} alt="Picture of github"></Image>
