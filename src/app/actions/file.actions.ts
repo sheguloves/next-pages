@@ -11,8 +11,7 @@ const md = markdownit({
       try {
         return hljs.highlight(str, { language: lang }).value;
       } catch (error) {
-        // TODO: jump to error page
-        console.log(error);
+        console.log('Highlight error: ', error);
       }
     }
 
@@ -32,7 +31,7 @@ export async function readRawPosts() {
       key: string;
     }[] = [];
 
-    for(let file of files) {
+    for(const file of files) {
       const filepath = `${contentPath}/${file}`;
       const filestat = await fs.stat(filepath);
       if (filestat.isDirectory()) {
@@ -46,7 +45,7 @@ export async function readRawPosts() {
 
       let title = '';
 
-      for (let line of lines) {
+      for (const line of lines) {
         if (line.startsWith('#') && !line.includes('##')) {
           title = line.replace('#', '').trim();
           break;
@@ -61,7 +60,7 @@ export async function readRawPosts() {
     }
     return fileAbstract;
   } catch (error) {
-    console.log(error);
+    console.log('Read raw post error', error);
     return [];
   }
 }
@@ -73,9 +72,18 @@ export async function getPostContent(fileName: string) {
     const content = await fs.readFile(filePath, {
       encoding: 'utf-8'
     });
+
+    applyGithubPath(content);
     return md.render(content);
   } catch(error) {
-    console.log(error);
+    console.log('Get post html content error', error);
     return [];
+  }
+}
+
+function applyGithubPath(content: string) {
+  if (process.env.GITHUB_PAGE_BASE_PATH) {
+    const prefix = process.env.GITHUB_PAGE_BASE_PATH;
+    content.replaceAll('(/assets/', `(${prefix}/assets/`);
   }
 }
