@@ -8,7 +8,13 @@ export interface Post {
   date: string;
   title: string;
   key: string;
-  createTime: Date;
+}
+
+function getFileData(filename: string) {
+  const name = filename.replace('.md', '');
+  const arr = name.split('-');
+  const date = arr.slice(arr.length - 3).join('-');
+  return date;
 }
 
 export async function readRawPosts() {
@@ -16,6 +22,9 @@ export async function readRawPosts() {
 
   try {
     const files = await fs.readdir(contentPath);
+    files.sort((a, b) => {
+      return getFileData(a) > getFileData(b) ? -1 : 1;
+    });
 
     const fileAbstract: Post[] = [];
 
@@ -25,7 +34,6 @@ export async function readRawPosts() {
       if (filestat.isDirectory()) {
         continue;
       }
-      const ctime = filestat.ctime;
       const fileContent = await fs.readFile(filepath, {
         encoding: 'utf-8',
       });
@@ -40,13 +48,12 @@ export async function readRawPosts() {
       }
 
       fileAbstract.push({
-        createTime: ctime,
-        date: `${ctime.getFullYear()}-${ctime.getMonth() + 1}-${ctime.getDate()}`,
+        date: getFileData(file),
         title,
         key: file,
       });
     }
-    return fileAbstract.sort((a, b) => a.createTime < b.createTime ? 1 : -1);
+    return fileAbstract
   } catch (error) {
     console.log('Read raw post error', error);
     return [];
