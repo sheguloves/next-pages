@@ -6,6 +6,9 @@ import hljs from 'highlight.js';
 const POSTS_FOLDER_PATH = './src/app/_posts';
 
 const md = markdownit({
+  html: true,
+  linkify: true,
+  typographer: true,
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
       try {
@@ -53,7 +56,7 @@ export async function readRawPosts() {
       }
 
       fileAbstract.push({
-        date: `${mtime.getFullYear()}-${mtime.getMonth()}-${mtime.getDay()}`,
+        date: `${mtime.getFullYear()}-${mtime.getMonth() + 1}-${mtime.getDate()}`,
         title,
         key: file,
       });
@@ -69,11 +72,11 @@ export async function getPostContent(fileName: string) {
   const filePath = path.resolve(`${POSTS_FOLDER_PATH}/${fileName}`);
 
   try {
-    const content = await fs.readFile(filePath, {
+    let content = await fs.readFile(filePath, {
       encoding: 'utf-8'
     });
 
-    applyGithubPath(content);
+    content = applyGithubPath(content);
     return md.render(content);
   } catch(error) {
     console.log('Get post html content error', error);
@@ -84,6 +87,7 @@ export async function getPostContent(fileName: string) {
 function applyGithubPath(content: string) {
   if (process.env.GITHUB_PAGE_BASE_PATH) {
     const prefix = process.env.GITHUB_PAGE_BASE_PATH;
-    content.replaceAll('(/assets/', `(${prefix}/assets/`);
+    return content.replaceAll('(/assets/', `(${prefix}/assets/`);
   }
+  return content;
 }
