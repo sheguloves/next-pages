@@ -28,12 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen leading-8`}
       >
         <Header></Header>
-        <section className="p-8 flex flex-auto justify-center flex-row overflow-auto">
+        <main className="flex item-center flex-col py-6">
           {children}
-        </section>
+        </main>
       </body>
     </html>
   );

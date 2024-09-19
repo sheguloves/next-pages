@@ -1,26 +1,14 @@
 import fs from 'fs/promises';
 import path from 'path/posix';
-import markdownit from 'markdown-it';
-import hljs from 'highlight.js';
+import parse from './markdown';
 
 const POSTS_FOLDER_PATH = './src/app/_posts';
 
-const md = markdownit({
-  html: true,
-  linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(str, { language: lang }).value;
-      } catch (error) {
-        console.log('Highlight error: ', error);
-      }
-    }
-
-    return ''; // use external default escaping
-  }
-});
+export interface Post {
+  date: string;
+  title: string;
+  key: string;
+}
 
 export async function readRawPosts() {
   const contentPath = path.resolve(POSTS_FOLDER_PATH);
@@ -28,11 +16,7 @@ export async function readRawPosts() {
   try {
     const files = await fs.readdir(contentPath);
 
-    const fileAbstract: {
-      date: string;
-      title: string;
-      key: string;
-    }[] = [];
+    const fileAbstract: Post[] = [];
 
     for(const file of files) {
       const filepath = `${contentPath}/${file}`;
@@ -77,10 +61,11 @@ export async function getPostContent(fileName: string) {
     });
 
     content = applyGithubPath(content);
-    return md.render(content);
+    const result = await parse(content);
+    return result;
   } catch(error) {
     console.log('Get post html content error', error);
-    return [];
+    return null;
   }
 }
 
