@@ -7,7 +7,7 @@ export default function About() {
     <>
       <h1>关于我</h1>
       <p>
-        一个前端手艺人
+        一个搬砖手艺人
       </p>
       <h2>技能</h2>
       <ul>

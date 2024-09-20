@@ -108,9 +108,14 @@ aside li  span.post-date {
   margin-bottom: 2rem;
 }
 
-.table-of-contents .ml-4 {
-  margin-left: 2rem;
+#table-of-contents .ml-4 {
+  margin-left: 1rem;
 }
+
+#table-of-contents .ml-8 {
+  margin-left: 3rem;
+}
+
 
 blockquote {
   padding-left: 1rem;
