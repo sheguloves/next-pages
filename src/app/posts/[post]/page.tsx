@@ -18,7 +18,7 @@ export default async function Post({ params }: { params: { post: string } }) {
         <aside className="hidden md:block md:w-1/5 pl-6 max-h-[90vh] h-full overflow-auto sticky top-16 left-0 mt-6">
           <PostList></PostList>
         </aside>
-        <div className="w-full md:w-3/5 px-2 md:px-12 px-4">
+        <div className="w-full md:w-3/5 md:px-12 px-8">
           <article className="post-article"
             dangerouslySetInnerHTML={{ __html: contentResult.article}}>
           </article>

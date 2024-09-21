@@ -12,7 +12,7 @@ export default async function PostList() {
           return (
           <li key={item.key}>
             <div className="flex gap-10">
-              <span className="post-date">{item.date}</span>
+              <span className="post-date hidden sm:block shrink-0">{item.date}</span>
               <Link href={`/posts/${item.key}`}>{item.title}</Link>
             </div>
           </li>)
