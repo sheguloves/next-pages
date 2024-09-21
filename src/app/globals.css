@@ -42,37 +42,41 @@ nav a {
   text-decoration: none;
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+h2::after, h3::after {
+  padding-top: .5rem;
+  content: '';
+  display: block;
+  border-bottom-color: var(--foreground);
+  border-bottom-width: 1px;
+}
+
 h1 {
   font-size: xx-large;
-  padding-bottom: 1rem;
-  font-weight: 800;
 }
 
 h2 {
   font-size: larger;
-  padding: 1rem 0;
-  font-weight: 600;
 }
 
 h2::after {
-  padding-top: .5rem;
-  content: '';
-  display: block;
-  border-bottom: 1px solid var(--foreground);
+  border-bottom-style: solid;
 }
 
-
 h3 {
-  font-weight: 600;
-  padding: 1rem 0;
   font-size: medium;
 }
 
 h3::after {
-  padding-top: .5rem;
-  content: '';
-  display: block;
-  border-bottom: 1px solid var(--foreground);
+  border-bottom-style: dashed;
+}
+
+h4 {
+  font-style: italic;
 }
 
 .post-article code {
@@ -87,13 +91,19 @@ h3::after {
   margin: 1rem 0;
 }
 
-ul {
+.post-article > ul {
+  margin-left: 2rem;
+}
+
+ul, ol {
   margin-left: 1rem;
+}
+
+ul {
   list-style-type: disc;
 }
 
 ol {
-  margin-left: 1rem;
   list-style: decimal;
 }
 
@@ -108,14 +118,21 @@ aside li  span.post-date {
   margin-bottom: 2rem;
 }
 
-#table-of-contents .ml-4 {
+#table-of-contents .ml-1 {
   margin-left: 1rem;
 }
 
-#table-of-contents .ml-8 {
+#table-of-contents .ml-2 {
+  margin-left: 2rem;
+}
+
+#table-of-contents .ml-3 {
   margin-left: 3rem;
 }
 
+#table-of-contents .ml-4 {
+  margin-left: 4rem;
+}
 
 blockquote {
   padding-left: 1rem;
