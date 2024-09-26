@@ -21,10 +21,10 @@ export async function readRawPosts() {
   const contentPath = path.resolve(POSTS_FOLDER_PATH);
 
   try {
-    const files = await fs.readdir(contentPath);
-    files.sort((a, b) => {
+    let files = await fs.readdir(contentPath);
+    files = files.sort((a, b) => {
       return getFileData(a) > getFileData(b) ? -1 : 1;
-    });
+    }).filter(item => !item.startsWith('_'));
 
     const fileAbstract: Post[] = [];
 
