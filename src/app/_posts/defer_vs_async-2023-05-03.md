@@ -2,11 +2,11 @@
 
 script 标签中，defer 和 async的区别。
 
-![defer.jpg](/assets/defer.jpg)
+![defer.jpg](defer.jpg)
 
-![async.jpg](/assets/async.jpg)
+![async.jpg](async.jpg)
 
-![normal.jpg](/assets/normal.jpg)
+![normal.jpg](normal.jpg)
 
 从上面的图中可以看出:
 

@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path/posix';
-import parse from './markdown';
+import parseMdToHTML from './markdown';
 
 const POSTS_FOLDER_PATH = './src/app/_posts';
 
@@ -69,7 +69,7 @@ export async function getPostContent(fileName: string) {
     });
 
     content = applyGithubPath(content);
-    const result = await parse(content);
+    const result = await parseMdToHTML(content);
     return result;
   } catch(error) {
     console.log('Get post html content error', error);

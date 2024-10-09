@@ -4,7 +4,7 @@
 
 在工作中，前端开发人员经常需要跟DOM事件打交道，而在事件对象中，有许多跟事件位置相关的属性，比如**clientX**, **clientY**, **offsetX**, **offsetY**等等，需要我们对这些属性有一个清晰的认识，在使用的时候就可以得心应手。
 
-![mouse-event-position.png](/assets/mouse-event-position.png)
+![mouse-event-position.png](mouse-event-position.png)
 
 ### screenX and screenY property
 
@@ -30,4 +30,4 @@ The **movementX** and **movementY** properties return the relative position 
 
 ## DOM元素的位置信息
 
-![dom-position.png](/assets/dom-position.png)
+![dom-position.png](dom-position.png)

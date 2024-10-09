@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from 'next/image'
+import Image from 'next/image';
 import githubImg from 'public/assets/github.png';
 import fav from '@/app/favicon.ico';
 

@@ -27,9 +27,9 @@ IP地址查找对应主机所在局域网
 
 ### TCP建立连接
 
-![tcp-connect.jpg](/assets/tcp-1.jpg)
+![tcp-connect.jpg](tcp-1.jpg)
 
-![tcp-disconnect.jpg](/assets/tcp-2.jpg)
+![tcp-disconnect.jpg](tcp-2.jpg)
 
 - 建立连接的时候，没有数据的发送，所以可以合并中间两次握手，总共为三次握手.
 - 4次挥手只是把SYN=1 变成了 FIN=1，为什么不能合并中间两次挥手？服务端是服务于多个客户端是，服务端跟客户端进行第二次挥手时，数据有可能还没有接收/发送结束，无法同时发送 FIN=1，所以无法合并.

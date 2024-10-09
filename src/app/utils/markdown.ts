@@ -32,7 +32,7 @@ marked.use(gfmHeadingId({prefix: 'md-'}), {
 	}
 });
 
-export default async function parse(content: string) {
+export default async function parseMdToHTML(content: string) {
   const article = await marked.parse(content);
   return {
     article,

@@ -28,7 +28,7 @@ export default function About() {
       <ul>
         <li>
           <span className="pr-4"><strong>邮箱: </strong></span>
-          <a className="underline" href="mailto:sheguloves@hotmail.com">sheguloves@hotmail.com</a>
+          <a className="underline" href="mailto:68030944@qq.com">68030944@qq.com</a>
         </li>
         <li>
           <span className="pr-4"><strong>微信: </strong></span>
