@@ -19,8 +19,16 @@ export default async function Post({ params }: { params: { post: string } }) {
 
     const artical = parse(contentResult.article, {
       replace(domNode) {
-        if (domNode instanceof Element && domNode.attribs && domNode.name === 'img') {
-          return <DynamicImage src={domNode.attribs.src} alt={domNode.attribs.alt}></DynamicImage>
+        if (domNode instanceof Element) {
+          if (domNode.attribs) {
+            if (domNode.name === 'img') {
+              return <DynamicImage src={domNode.attribs.src} alt={domNode.attribs.alt}></DynamicImage>
+            }
+            if (domNode.name === 'a' && domNode.attribs.title?.startsWith('download-')) {
+              domNode.attribs.title = domNode.attribs.title.replace('download-', '');
+              domNode.attribs.download = domNode.attribs.title;
+            }
+          }
         }
       },
     });

@@ -17,8 +17,10 @@
 /build
 
 # misc
+.vscode
 .DS_Store
 *.pem
+!public/**/*.pem
 
 # debug
 npm-debug.log*

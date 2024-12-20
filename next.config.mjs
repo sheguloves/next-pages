@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.pem/,
+      use: 'raw-loader',
+    });
+
+    return config
+  },
   output: 'export',
   images: {
     unoptimized: true
